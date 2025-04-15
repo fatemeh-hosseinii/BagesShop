@@ -10,7 +10,15 @@ export const useShoppingCart = () => {
 }
 
 export function ShoppingCartContextProvider ({children}){
+
     const[CartItem,SetCartItem]=useState([])
+    const totalqty = CartItem.reduce((totalyqty, item) => {
+        return totalyqty + item.qty
+    }, 0)
+    
+    const getproductqty=(id)=>{
+        return CartItem.find((item)=>item.id==id)?.qty || 0
+    }
     const HandleIncreaceProductQty= (id)=>{
         SetCartItem(curentitem=>{
             const isnotproductexist=CartItem.find((item)=>item.id==id)==null
@@ -31,7 +39,7 @@ export function ShoppingCartContextProvider ({children}){
         })
     }
     return (
-        <ShoppingCartContext.Provider value={{CartItem,HandleIncreaceProductQty}}>
+        <ShoppingCartContext.Provider value={{CartItem,HandleIncreaceProductQty,getproductqty,totalqty}}>
             {children}
         </ShoppingCartContext.Provider>
     )
