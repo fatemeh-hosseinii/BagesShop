@@ -1,47 +1,73 @@
 "use client"
-const { createContext, useState, useContext } = require("react");
+import { createContext, useState, useContext } from "react";
 
-const ShoppingCartContext=createContext({})
+const ShoppingCartContext = createContext({});
 
 export const useShoppingCart = () => {
-    return (
-        useContext(ShoppingCartContext)
-    )
-}
+    return useContext(ShoppingCartContext);
+};
 
-export function ShoppingCartContextProvider ({children}){
+export function ShoppingCartContextProvider({ children }) {
+    const [cartItem, SetCartItem] = useState([]);
 
-    const[CartItem,SetCartItem]=useState([])
-    const totalqty = CartItem.reduce((totalyqty, item) => {
-        return totalyqty + item.qty
-    }, 0)
-    
-    const getproductqty=(id)=>{
-        return CartItem.find((item)=>item.id==id)?.qty || 0
-    }
-    const HandleIncreaceProductQty= (id)=>{
-        SetCartItem(curentitem=>{
-            const isnotproductexist=CartItem.find((item)=>item.id==id)==null
-            if(isnotproductexist){
-                return (
-                    [...curentitem,{id:id,qty:1}]
-                )
-            }
-            else {
-                return curentitem.map((elem)=>{
-                    if(elem.id==id){
-                        return {...elem,qty:elem.qty+1}
-                    }else{
-                        return elem
+    const totalqty = cartItem.reduce((totalQty, item) => {
+        return totalQty + item.qty;
+    }, 0);
+
+    const getproductqty = (id) => {
+        return cartItem.find((item) => item.id == id)?.qty || 0;
+    };
+
+    const HandleIncreaceProductQty = (id) => {
+        SetCartItem((currentItem) => {
+            const isNotProductExist = currentItem.find((item) => item.id == id) == null;
+            if (isNotProductExist) {
+                return [...currentItem, { id: id, qty: 1 }];
+            } else {
+                return currentItem.map((item) => {
+                    if (item.id == id) {
+                        return { ...item, qty: item.qty + 1 };
+                    } else {
+                        return item;
                     }
-                })
+                });
             }
+        });
+    };
+
+    const HandleDecreasProductQty = (id) => {
+        SetCartItem((currentItem) => {
+            const isQtyOne = currentItem.find((item) => item.id == id)?.qty === 1;
+            if (isQtyOne) {
+                return currentItem.filter((item) => item.id != id);
+            } else {
+                return currentItem.map((item) => {
+                    if (item.id == id) {
+                        return { ...item, qty: item.qty - 1 };
+                    } else {
+                        return item;
+                    }
+                });
+            }
+        });
+    };
+    const RemoveItem=(id)=>{
+        SetCartItem((currentItem)=>{
+            return currentItem.filter((item)=>item.id!=id)
         })
     }
     return (
-        <ShoppingCartContext.Provider value={{CartItem,HandleIncreaceProductQty,getproductqty,totalqty}}>
+        <ShoppingCartContext.Provider
+            value={{
+                cartItem,
+                HandleIncreaceProductQty,
+                HandleDecreasProductQty,
+                getproductqty,
+                totalqty,
+                RemoveItem,
+            }}
+        >
             {children}
         </ShoppingCartContext.Provider>
-    )
-
+    );
 }

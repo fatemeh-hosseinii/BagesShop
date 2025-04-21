@@ -1,11 +1,7 @@
 import Link from "next/link";
 import ProductItem from "./ProductItem";
-import axios from "axios";
 
-const Product = async () => {
-  const res = await axios.get("http://localhost:3004/product");
-  const data = res.data; 
-
+const Product = ({ data }) => {
   return (
     <>
       {data.map((elem, index) => (
@@ -22,3 +18,4 @@ const Product = async () => {
 };
 
 export default Product;
+
