@@ -12,7 +12,7 @@ const Slider = () => {
   const data=[
     {
       id:1,
-      img:"https://www.welovebags.de/out/pictures/wysiwigpro/markenwelt/markenwelt_replay.jpg"
+      img:"https://www.welovebags.de/out/pictures/promo/startseitenbanner-sale(2).webp"
     },
     {
       id:2,
