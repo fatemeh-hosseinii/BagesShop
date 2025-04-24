@@ -22,7 +22,7 @@ const NavbarUp = () => {
 
                     </div>
                     <div className=" flex flex-row justify-around  w-[40%]">
-                            <Link className=" flex flex-col justify-center items-center" href="">
+                            <Link className=" flex flex-col justify-center items-center" href="/favorite">
                                 <BsHeart size={25}/>
                                 <p className="text-[12px]">Favorite</p>
                             </Link>

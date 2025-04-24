@@ -1,5 +1,5 @@
 "use client"
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 
 const ShoppingCartContext = createContext({});
 
@@ -9,7 +9,30 @@ export const useShoppingCart = () => {
 
 export function ShoppingCartContextProvider({ children }) {
     const [cartItem, SetCartItem] = useState([]);
-
+      const [favorites, setFavorites] = useState([]);
+    // ذخیره علاقه‌مندی‌ها در localStorage
+    useEffect(() => {
+        const storedFavorites = localStorage.getItem('favorites');
+        if (storedFavorites) {
+          setFavorites(JSON.parse(storedFavorites));
+        }
+      }, []);
+    
+      useEffect(() => {
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+      }, [favorites]);
+    
+      const addToFavorites = (product) => {
+        setFavorites((prev) => [...prev, product]);
+      };
+    
+      const removeFromFavorites = (id) => {
+        setFavorites((prev) => prev.filter((item) => item.id !== id));
+      };
+    
+      const isFavorite = (id) => {
+        return favorites.some((item) => item.id === id);
+      };
     const totalqty = cartItem.reduce((totalQty, item) => {
         return totalQty + item.qty;
     }, 0);
@@ -65,6 +88,7 @@ export function ShoppingCartContextProvider({ children }) {
                 getproductqty,
                 totalqty,
                 RemoveItem,
+                favorites, addToFavorites, removeFromFavorites, isFavorite
             }}
         >
             {children}
