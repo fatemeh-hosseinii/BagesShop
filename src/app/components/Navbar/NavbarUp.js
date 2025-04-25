@@ -4,6 +4,7 @@ import { BsHeart } from "react-icons/bs";
 import { BsPerson } from "react-icons/bs";
 import { BsSearch } from "react-icons/bs";
 import { BsFillPersonVcardFill } from "react-icons/bs";
+import FavoritIcon from "./FavoritIcon";
 
 const NavbarUp = () => {
     return (
@@ -17,15 +18,12 @@ const NavbarUp = () => {
                     </div>
                 </div>
                 <div className="w-[60%] flex flex-row justify-between">
-                    <div className="w-[30%] ">
+                    <Link href="/" className="w-[30%] ">
                         <img src="/Media/logo (1).png" alt="لوگو" />
 
-                    </div>
+                    </Link>
                     <div className=" flex flex-row justify-around  w-[40%]">
-                            <Link className=" flex flex-col justify-center items-center" href="/favorite">
-                                <BsHeart size={25}/>
-                                <p className="text-[12px]">Favorite</p>
-                            </Link>
+                            <FavoritIcon/>
                             <Link className=" flex flex-col justify-center items-center" href="">
                                 <BsBag size={25}/>
                                 <p className="text-[12px]">Cart</p>
@@ -34,7 +32,7 @@ const NavbarUp = () => {
                                 <BsPerson size={28}/>
                                 <p className="text-[12px]">User</p>
                             </Link>
-                            <Link className=" flex flex-col justify-center items-center" href="">
+                            <Link className=" flex flex-col justify-center items-center" href="/dashbord">
                                 <BsFillPersonVcardFill size={28}/>
                                 <p className="text-[12px]">Dashbord</p>
                             </Link>
