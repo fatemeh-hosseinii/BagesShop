@@ -16,7 +16,7 @@ const page = async ({ params }) => {
     return (
       <div className="flex flex-row w-[100%] bg-[blue] mt-4">
             <div className="w-[50%] bg-[red]">
-                    gggg
+                  <img src={data.image} alt="" />
             </div>
             <div className="bg-amber-950 w-[50%]">
                 yyyyyyy
