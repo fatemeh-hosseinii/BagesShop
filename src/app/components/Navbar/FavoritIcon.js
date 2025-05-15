@@ -13,10 +13,10 @@ const FavoritIcon = () => {
       onMouseEnter={() => setShowPopup(true)}
       onMouseLeave={() => setShowPopup(false)}
     >
-      <button className="text-xl mt-1">
-      <Link className=" flex flex-col justify-center items-center" href="/favorite">
-            <BsHeart size={25}/>
-            <p className="text-[12px]">Favorite</p>
+      <button className="text-xl ">
+      <Link  className="flex flex-col items-center text-gray-700" href="/favorite">
+            <BsHeart size={22}/>
+            <p className="text-xs mt-1">Favorite</p>
     </Link>
       </button>
 

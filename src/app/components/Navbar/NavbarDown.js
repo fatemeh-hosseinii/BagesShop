@@ -1,36 +1,29 @@
-import { BsSearch } from "react-icons/bs";
+import Link from "next/link";
 
 const NavbarDown = () => {
-    const bagBrands = [
-        { id: 1, name: "Dior" },
-        { id: 2, name: "Nike" },
-        { id: 3, name: "Samsonite" },
-        { id: 4, name: "Louis Vuitton" },
-        { id: 5, name: "Gucci" },
-        { id: 6, name: "Mango" },
-        { id: 7, name: "Adidas" },
+  const navItems = [
+    { id: 1, name: "Home", link: "/" },
+    { id: 2, name: "Shop", link: "/shop" },
+    { id: 3, name: "Categories", link: "/categories" },
+    { id: 4, name: "Contact", link: "/contact" },
+  ];
 
-      ];
-      
-    return (<>
-    <div className=" flex flex-row justify-between mt-2 w-[100%]">
-        <ul className="flex flex-row gap-5 w-[50%]  "> 
-            {
-                bagBrands.map((elem)=>{
-                    return(
-                        <li className=" text-[17px] ">
-                        {elem.name}
-                    </li>
-                    )
-                })
-            }
-        </ul>
-        <div className=" w-[30%] border-b border-black flex flex-row justify-between p-1">
-            <input type="text" className="outline-0"  placeholder="Search"/>
-            <BsSearch className="text-[#e8e8e8]" size={23}/>
-        </div>
-    </div>
-    </>  );
-}
- 
+  return (
+    <nav className="flex justify-center w-full ">
+      <ul className="flex flex-col md:flex-row gap-4 md:gap-8 items-center text-center">
+        {navItems.map((item) => (
+          <li key={item.id}>
+            <Link
+              href={item.link}
+              className="text-[16px] text-gray-700 hover:text-black transition font-medium"
+            >
+              {item.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+};
+
 export default NavbarDown;
