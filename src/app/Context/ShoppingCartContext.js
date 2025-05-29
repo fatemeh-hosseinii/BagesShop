@@ -10,7 +10,6 @@ export const useShoppingCart = () => {
 export function ShoppingCartContextProvider({ children }) {
     const [cartItem, SetCartItem] = useState([]);
       const [favorites, setFavorites] = useState([]);
-    // ذخیره علاقه‌مندی‌ها در localStorage
     useEffect(() => {
         const storedFavorites = localStorage.getItem('favorites');
         if (storedFavorites) {

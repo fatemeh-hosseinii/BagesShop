@@ -44,13 +44,13 @@ const Slider = () => {
         }}
         pagination={{ clickable: true }}
         modules={[EffectCoverflow, Pagination]}
-        className="w-[80%] h-[60vh]"
+        className="md:w-[80%] w-[100%] h-[60vh]"
       >
         {
           data.map((elem)=>{
             return  <SwiperSlide
             key={elem.id}
-            className="w-64 h-64 rounded-2xl overflow-hidden shadow-lg"
+            className="md:w-64 w-[100%] h-64 rounded-2xl overflow-hidden shadow-lg"
           >
            <SliderItem elem={elem}/>
           </SwiperSlide>
