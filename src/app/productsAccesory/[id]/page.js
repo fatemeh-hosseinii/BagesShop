@@ -1,3 +1,4 @@
+import AddToCart from "@/app/components/CartComponents/AddToCart/AddToCart";
 import Link from "next/link";
 
 const page = async({params}) => {
@@ -20,7 +21,7 @@ const page = async({params}) => {
           <p className="text-[22px] font-bold mt-2">54,00 €</p>
         </div>
         <div className=" w-[65%] mt-4 flex flex-col gap-5">
-          <Link href={`/cart/${data.id}`} className="bg-[black] w-[100%] text-center py-2 font-bold text-[white] hover:bg-green-500 transition" >Add To Cart</Link>
+          <AddToCart/>
           <Link className="bg-[#ed4180] w-[100%] text-center py-2 font-bold text-[white] hover:bg-green-500 transition" href="">Add To Wish List</Link>
           <Link className="bg-[#ff6161] w-[100%] text-center py-2 font-bold text-[white] hover:bg-green-500 transition" href="">Add To Cart</Link>
         </div>
