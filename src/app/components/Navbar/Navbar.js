@@ -9,7 +9,7 @@ import Link from "next/link";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <nav className="w-full  bg-[#ffbdbd] shadow-lg  sticky top-0 z-[999]">
+    <nav className="w-full  bg-gradient-to-tr from-pink-50 via-pink-100 to-pink-50 shadow-lg  sticky top-0 z-[999]">
       <div className="container mx-auto flex flex-col gap-4 px-4 py-3">
         {/* بالای نوار - لوگو، سرچ، آیکون‌ها */}
         <NavbarUp />

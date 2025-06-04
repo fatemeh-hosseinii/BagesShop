@@ -40,14 +40,14 @@ export function ShoppingCartContextProvider({ children }) {
         return cartItem.find((item) => item.id == id)?.qty || 0;
     };
 
-    const HandleIncreaceProductQty = (id) => {
+    const HandleIncreaceProductQty = (product) => {
         SetCartItem((currentItem) => {
-            const isNotProductExist = currentItem.find((item) => item.id == id) == null;
+            const isNotProductExist = currentItem.find((item) => item.id == product.id) == null;
             if (isNotProductExist) {
-                return [...currentItem, { id: id, qty: 1 }];
+                return [...currentItem, { ...product, qty: 1 }];
             } else {
                 return currentItem.map((item) => {
-                    if (item.id == id) {
+                    if (item.id == product.id) {
                         return { ...item, qty: item.qty + 1 };
                     } else {
                         return item;
@@ -56,6 +56,7 @@ export function ShoppingCartContextProvider({ children }) {
             }
         });
     };
+    
 
     const HandleDecreasProductQty = (id) => {
         SetCartItem((currentItem) => {

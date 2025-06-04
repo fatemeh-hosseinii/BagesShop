@@ -60,9 +60,9 @@ const Brand = () => {
   ];
 
   return (
-    <div className="bg-[#ffacba] py-5">
+    <div className="bg-pink-50 py-5">
       <Container>
-        <h2 className="text-white text-2xl font-bold mb-6 text-center">Our Brands</h2>
+        <h2 className="text-pink-600 text-2xl font-bold mb-6 text-center">Our Brands</h2>
         <Swiper
         
         //   centeredSlides={true}
