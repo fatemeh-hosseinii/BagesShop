@@ -40,14 +40,14 @@ export function ShoppingCartContextProvider({ children }) {
         return cartItem.find((item) => item.id == id)?.qty || 0;
     };
 
-    const HandleIncreaceProductQty = (product) => {
+    const HandleIncreaceProductQty = (id) => {
         SetCartItem((currentItem) => {
-            const isNotProductExist = currentItem.find((item) => item.id == product.id) == null;
+            const isNotProductExist = currentItem.find((item) => item.id == id) == null;
             if (isNotProductExist) {
-                return [...currentItem, { ...product, qty: 1 }];
+                return [...currentItem, { id:id, qty: 1 }];
             } else {
                 return currentItem.map((item) => {
-                    if (item.id == product.id) {
+                    if (item.id == id) {
                         return { ...item, qty: item.qty + 1 };
                     } else {
                         return item;
